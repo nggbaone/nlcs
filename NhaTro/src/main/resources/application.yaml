@@ -1,0 +1,18 @@
+server:
+  port: 8080
+#  servlet:
+#    context-path:
+spring:
+  datasource:
+    url: "jdbc:mysql://localhost:3306/nhatro"
+    username: root
+    password: 123456
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+jwt:
+  expiryHour: 1
+  expiryDay: 14
+  secretkey: 6c3dfaef940deb9d7648067adf7b9a94700c7e108638b0f31a692d167424062b
