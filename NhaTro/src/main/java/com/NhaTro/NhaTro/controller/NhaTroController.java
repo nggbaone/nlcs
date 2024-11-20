@@ -2,6 +2,7 @@ package com.NhaTro.NhaTro.controller;
 
 import com.NhaTro.NhaTro.dto.request.admin.NhaTroCapNhatRequest;
 import com.NhaTro.NhaTro.dto.request.admin.NhaTroThemRequest;
+import com.NhaTro.NhaTro.dto.request.khach.NhaTroTimKiemRequest;
 import com.NhaTro.NhaTro.dto.response.admin.ChiTietNhaTroResponse;
 import com.NhaTro.NhaTro.dto.response.khach.NhaTroHienThiResponse;
 
@@ -49,9 +50,14 @@ public class NhaTroController {
         return nhaTroService.xoaNhaTro(id);
     }
 
-    @PutMapping("admin/cap-nhat")
+    @PutMapping("/admin/cap-nhat")
     public boolean capNhatNhaTro(@RequestBody NhaTroCapNhatRequest request) {
         return nhaTroService.capNhatNhaTro(request);
+    }
+
+    @PostMapping("/tim-kiem")
+    public List<NhaTroHienThiResponse> timKiemNhaTro(@RequestBody NhaTroTimKiemRequest request) {
+        return nhaTroService.timKiemNhaTro(request);
     }
 
 }

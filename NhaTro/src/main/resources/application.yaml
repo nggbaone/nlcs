@@ -11,8 +11,16 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+  servlet:
+    multipart:
+      max-file-size: 500KB
+      max-request-size: 500KB
+  web:
+    resources:
+      static-locations: file:./uploads/
 
 jwt:
   expiryHour: 1
   expiryDay: 14
   secretkey: 6c3dfaef940deb9d7648067adf7b9a94700c7e108638b0f31a692d167424062b
+

@@ -71,6 +71,7 @@ public class YeuCauServiceImpl implements YeuCauService {
             hienThiResponse.setMoTa(nhaTroEntity.getMoTa());
             hienThiResponse.setNoiThat(nhaTroEntity.getNoiThat());
             hienThiResponse.setId(nhaTroEntity.getId());
+            hienThiResponse.setHinhAnh(nhaTroEntity.getHinhAnh());
             nhaTroHienThiResponseList.add(hienThiResponse);
         }
         return nhaTroHienThiResponseList;
@@ -94,6 +95,7 @@ public class YeuCauServiceImpl implements YeuCauService {
                 hienThiResponse.setMoTa(nhaTroEntity.getMoTa());
                 hienThiResponse.setNoiThat(nhaTroEntity.getNoiThat());
                 hienThiResponse.setId(nhaTroEntity.getId());
+                hienThiResponse.setHinhAnh(nhaTroEntity.getHinhAnh());
                 nhaTroHienThiResponseList.add(hienThiResponse);
             }
         }

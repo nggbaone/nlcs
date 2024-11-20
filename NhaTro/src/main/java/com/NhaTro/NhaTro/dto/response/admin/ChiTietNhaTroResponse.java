@@ -19,4 +19,5 @@ public class ChiTietNhaTroResponse {
     private long id;
     private String tinh;
     private String huyen;
+    private String hinhAnh;
 }

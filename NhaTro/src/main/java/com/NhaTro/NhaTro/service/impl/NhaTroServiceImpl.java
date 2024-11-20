@@ -2,6 +2,7 @@ package com.NhaTro.NhaTro.service.impl;
 
 import com.NhaTro.NhaTro.dto.request.admin.NhaTroCapNhatRequest;
 import com.NhaTro.NhaTro.dto.request.admin.NhaTroThemRequest;
+import com.NhaTro.NhaTro.dto.request.khach.NhaTroTimKiemRequest;
 import com.NhaTro.NhaTro.dto.response.admin.ChiTietNhaTroResponse;
 import com.NhaTro.NhaTro.dto.response.khach.NhaTroHienThiResponse;
 import com.NhaTro.NhaTro.entity.HuyenEntity;
@@ -52,6 +53,7 @@ public class NhaTroServiceImpl implements NhaTroService {
             hienThiResponse.setNoiThat(nhaTroEntity.getNoiThat());
             hienThiResponseList.add(hienThiResponse);
             hienThiResponse.setId(nhaTroEntity.getId());
+            hienThiResponse.setHinhAnh(nhaTroEntity.getHinhAnh());
         }
         return hienThiResponseList;
     }
@@ -74,6 +76,7 @@ public class NhaTroServiceImpl implements NhaTroService {
         hienThiResponse.setMoTa(nhaTroEntity.getMoTa());
         hienThiResponse.setNoiThat(nhaTroEntity.getNoiThat());
         hienThiResponse.setId(nhaTroEntity.getId());
+        hienThiResponse.setHinhAnh(nhaTroEntity.getHinhAnh());
         return hienThiResponse;
     }
 
@@ -130,6 +133,7 @@ public class NhaTroServiceImpl implements NhaTroService {
             Optional<TinhEntity> tinhEntity = tinhRepository.findById(huyenEntity.get().getTinhEntity().getId());
             chiTietNhaTroResponse.setTinh(tinhEntity.get().getTenTinh());
             chiTietNhaTroResponse.setHuyen(huyenEntity.get().getTenHuyen());
+            chiTietNhaTroResponse.setHinhAnh(nhaTroEntity.get().getHinhAnh());
             return chiTietNhaTroResponse;
         }
         return null;
@@ -144,6 +148,28 @@ public class NhaTroServiceImpl implements NhaTroService {
             return true;
         }
         return false;
+    }
+
+    public List<NhaTroHienThiResponse> timKiemNhaTro(NhaTroTimKiemRequest request) {
+        List<NhaTroEntity> nhaTroEntityList = nhaTroRepository.timKiemNhaTro(request);
+        List<NhaTroHienThiResponse> hienThiResponseList = new ArrayList<>();
+        for (NhaTroEntity nhaTroEntity : nhaTroEntityList) {
+            NhaTroHienThiResponse hienThiResponse = new NhaTroHienThiResponse();
+            hienThiResponse.setTieuDe(nhaTroEntity.getTieuDe());
+            hienThiResponse.setDienTich(nhaTroEntity.getDienTich());
+            hienThiResponse.setHang(nhaTroEntity.getHang());
+            hienThiResponse.setTrangThai(nhaTroEntity.getTrangThai());
+            hienThiResponse.setDiaChi(nhaTroEntity.getDiaChi());
+            hienThiResponse.setGiaDien(nhaTroEntity.getGiaDien());
+            hienThiResponse.setGiaNuoc(nhaTroEntity.getGiaNuoc());
+            hienThiResponse.setGiaThue(nhaTroEntity.getGiaThue());
+            hienThiResponse.setMoTa(nhaTroEntity.getMoTa());
+            hienThiResponse.setNoiThat(nhaTroEntity.getNoiThat());
+            hienThiResponseList.add(hienThiResponse);
+            hienThiResponse.setId(nhaTroEntity.getId());
+            hienThiResponse.setHinhAnh(nhaTroEntity.getHinhAnh());
+        }
+        return hienThiResponseList;
     }
 
 }

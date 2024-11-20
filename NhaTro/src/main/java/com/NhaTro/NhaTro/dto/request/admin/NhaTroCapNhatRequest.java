@@ -19,4 +19,5 @@ public class NhaTroCapNhatRequest {
     private Long tinh;
     private Long huyen;
     private long trangThai;
+    private String hinhAnh;
 }

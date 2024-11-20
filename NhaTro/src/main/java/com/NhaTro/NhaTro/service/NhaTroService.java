@@ -2,6 +2,7 @@ package com.NhaTro.NhaTro.service;
 
 import com.NhaTro.NhaTro.dto.request.admin.NhaTroCapNhatRequest;
 import com.NhaTro.NhaTro.dto.request.admin.NhaTroThemRequest;
+import com.NhaTro.NhaTro.dto.request.khach.NhaTroTimKiemRequest;
 import com.NhaTro.NhaTro.dto.response.admin.ChiTietNhaTroResponse;
 import com.NhaTro.NhaTro.dto.response.khach.NhaTroHienThiResponse;
 import com.NhaTro.NhaTro.entity.NhaTroEntity;
@@ -17,5 +18,6 @@ public interface NhaTroService {
     boolean xoaNhaTro(Long id);
     ChiTietNhaTroResponse chiTietNhaTro_Id(Long id);
     boolean capNhatNhaTro(NhaTroCapNhatRequest request);
+    List<NhaTroHienThiResponse> timKiemNhaTro(NhaTroTimKiemRequest request);
 
 }

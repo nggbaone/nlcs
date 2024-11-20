@@ -32,7 +32,9 @@ public class AppConfig {
             "/tai-khoan/dang-ky",
             "/nha-tro",
             "/tinh",
-            "/huyen/**"
+            "/huyen/**",
+            "/uploads/**",
+            "/files/**"
     };
 
     @Bean
@@ -41,7 +43,7 @@ public class AppConfig {
             @Override
             public void addCorsMappings(@NonNull CorsRegistry registry) {
                 registry.addMapping("**")
-                        .allowedOrigins("http://localhost:5500")
+                        .allowedOrigins("*")
                         .allowedMethods("GET", "POST", "PUT", "DELETE") // Allowed HTTP methods
                         .allowedHeaders("*") // Allowed request headers
                         .allowCredentials(true)

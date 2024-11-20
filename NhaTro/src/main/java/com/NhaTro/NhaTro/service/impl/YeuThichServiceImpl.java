@@ -61,6 +61,7 @@ public class YeuThichServiceImpl implements YeuThichService {
             hienThiResponse.setMoTa(nhaTroEntity.getMoTa());
             hienThiResponse.setNoiThat(nhaTroEntity.getNoiThat());
             hienThiResponse.setId(nhaTroEntity.getId());
+            hienThiResponse.setHinhAnh(nhaTroEntity.getHinhAnh());
             nhaTroHienThiResponseList.add(hienThiResponse);
         }
         return nhaTroHienThiResponseList;
