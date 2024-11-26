@@ -42,7 +42,13 @@ public class YeuCauServiceImpl implements YeuCauService {
     @Autowired
     private TinhRepository tinhRepository;
 
-    public void themYeuCau(YeuCauThemRequest request) {
+    public boolean themYeuCau(YeuCauThemRequest request) {
+        List<YeuCauEntity> yeuCauEntityList = yeuCauRepository.findAll();
+        for (YeuCauEntity i : yeuCauEntityList) {
+            if (i.getTaiKhoanEntity().getId() == request.getIdTaiKhoan() && i.getNhaTroEntity().getId() == request.getIdNhaTro()) {
+                return false;
+            }
+        }
         YeuCauEntity yeuCauEntity = new YeuCauEntity();
         TaiKhoanEntity taiKhoanEntity = new TaiKhoanEntity();
         taiKhoanEntity.setId(request.getIdTaiKhoan());
@@ -52,6 +58,7 @@ public class YeuCauServiceImpl implements YeuCauService {
         yeuCauEntity.setNhaTroEntity(nhaTroEntity);
         yeuCauEntity.setTrangThai(1);
         entityManager.persist(yeuCauEntity);
+        return true;
     }
 
     public List<NhaTroHienThiResponse> hienThiYeuCau(Long idTaiKhoan) {

@@ -143,6 +143,7 @@ public class HopDongServiceImpl implements HopDongService {
             hopDongEntity.setTrangThai(1L);
             entityManager.persist(hopDongEntity);
             int check = yeuCauRepository.doiTrangThaiYeuCau(yeuCauEntity.get().getId(), 0L);
+            int tt_nhatro = nhaTroRepository.capNhatTrangThaiTro(nhaTroEntity.get().getId(), 0L);
             return true;
         }
         return false;

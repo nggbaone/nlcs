@@ -19,5 +19,6 @@ public interface NhaTroService {
     ChiTietNhaTroResponse chiTietNhaTro_Id(Long id);
     boolean capNhatNhaTro(NhaTroCapNhatRequest request);
     List<NhaTroHienThiResponse> timKiemNhaTro(NhaTroTimKiemRequest request);
+    List<NhaTroHienThiResponse> hienThiNhaTro1();
 
 }

@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface YeuThichService {
 
-    void themYeuThich(YeuThichThemRequest request);
+    boolean themYeuThich(YeuThichThemRequest request);
     List<NhaTroHienThiResponse> hienThiYeuThich (Long idTaiKhoan);
     void xoaYeuThich(YeuThichXoaRequest request);
 

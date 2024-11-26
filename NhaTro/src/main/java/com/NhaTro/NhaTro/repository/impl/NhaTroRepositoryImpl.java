@@ -2,7 +2,6 @@ package com.NhaTro.NhaTro.repository.impl;
 
 import com.NhaTro.NhaTro.dto.request.admin.NhaTroCapNhatRequest;
 import com.NhaTro.NhaTro.dto.request.khach.NhaTroTimKiemRequest;
-import com.NhaTro.NhaTro.dto.response.admin.ChiTietNhaTroResponse;
 import com.NhaTro.NhaTro.entity.NhaTroEntity;
 import com.NhaTro.NhaTro.repository.custom.NhaTroRepositoryCustom;
 import jakarta.persistence.EntityManager;
@@ -48,6 +47,14 @@ public class NhaTroRepositoryImpl implements NhaTroRepositoryCustom {
         sql.append(" id_huyen = ").append(request.getHuyen()).append(" ");
         sql.append(" WHERE id = ").append(request.getId());
 
+        Query query = entityManager.createNativeQuery(sql.toString());
+        return query.executeUpdate();
+    }
+
+    public int capNhatTrangThaiTro(Long id, Long t) {
+        StringBuilder sql = new StringBuilder(" UPDATE nha_tro SET ");
+        sql.append(" trang_thai = ").append(t).append(" ");
+        sql.append(" WHERE id = ").append(id);
         Query query = entityManager.createNativeQuery(sql.toString());
         return query.executeUpdate();
     }

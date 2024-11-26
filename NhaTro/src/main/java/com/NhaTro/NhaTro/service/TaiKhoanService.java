@@ -1,12 +1,14 @@
 package com.NhaTro.NhaTro.service;
 
 import com.NhaTro.NhaTro.dto.request.TaiKhoanDangNhapRequest;
+import com.NhaTro.NhaTro.dto.request.TaiKhoanThemGiayToRequest;
 import com.NhaTro.NhaTro.dto.request.admin.CapNhatTaiKhoanRequest;
 import com.NhaTro.NhaTro.dto.request.admin.TaiKhoanThemRequest;
 import com.NhaTro.NhaTro.dto.request.khach.TaiKhoanCapNhatRequest;
 import com.NhaTro.NhaTro.dto.request.khach.TaiKhoanDangKyRequest;
 import com.NhaTro.NhaTro.dto.request.khach.TaiKhoanDoiMatKhauRequest;
 import com.NhaTro.NhaTro.dto.response.TaiKhoanDangNhapResponse;
+import com.NhaTro.NhaTro.dto.response.TaiKhoanHienGiayToResponse;
 import com.NhaTro.NhaTro.dto.response.admin.ChiTietTaiKhoanResponse;
 import com.NhaTro.NhaTro.dto.response.admin.TaiKhoanHienThiResponse;
 import com.NhaTro.NhaTro.dto.response.khach.TaiKhoanHoatDongResponse;
@@ -29,5 +31,8 @@ public interface TaiKhoanService {
     boolean themTaiKhoan(TaiKhoanThemRequest request);
     ChiTietTaiKhoanResponse xemTaiKhoan(Long id);
     boolean ad_CapNhatTaiKhoan(CapNhatTaiKhoanRequest request);
+    boolean themGiayTo(TaiKhoanThemGiayToRequest request);
+    TaiKhoanHienGiayToResponse hienGiayTo(Long id);
+    boolean xoaGiayTo(Long id);
 
 }

@@ -21,8 +21,7 @@ public class YeuThichController {
 
     @PostMapping()
     public boolean themYeuThich(@RequestBody YeuThichThemRequest request){
-        yeuThichService.themYeuThich(request);
-        return true;
+        return yeuThichService.themYeuThich(request);
     }
 
     @GetMapping("/{idTaiKhoan}")

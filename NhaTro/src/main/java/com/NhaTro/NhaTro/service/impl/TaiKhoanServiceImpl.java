@@ -2,12 +2,14 @@ package com.NhaTro.NhaTro.service.impl;
 
 import com.NhaTro.NhaTro.customException.TaiKhoanDaTonTaiException;
 import com.NhaTro.NhaTro.dto.request.TaiKhoanDangNhapRequest;
+import com.NhaTro.NhaTro.dto.request.TaiKhoanThemGiayToRequest;
 import com.NhaTro.NhaTro.dto.request.admin.CapNhatTaiKhoanRequest;
 import com.NhaTro.NhaTro.dto.request.admin.TaiKhoanThemRequest;
 import com.NhaTro.NhaTro.dto.request.khach.TaiKhoanCapNhatRequest;
 import com.NhaTro.NhaTro.dto.request.khach.TaiKhoanDangKyRequest;
 import com.NhaTro.NhaTro.dto.request.khach.TaiKhoanDoiMatKhauRequest;
 import com.NhaTro.NhaTro.dto.response.TaiKhoanDangNhapResponse;
+import com.NhaTro.NhaTro.dto.response.TaiKhoanHienGiayToResponse;
 import com.NhaTro.NhaTro.dto.response.TokenResponse;
 import com.NhaTro.NhaTro.dto.response.admin.ChiTietTaiKhoanResponse;
 import com.NhaTro.NhaTro.dto.response.admin.TaiKhoanHienThiResponse;
@@ -246,6 +248,37 @@ public class TaiKhoanServiceImpl implements TaiKhoanService {
             String encodedPassword = passwordEncoder().encode(request.getMatKhau());
             request.setMatKhau(encodedPassword);
             int check = taiKhoanRepository.ad_CapNhatTaiKhoan(request);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean themGiayTo(TaiKhoanThemGiayToRequest request) {
+        TaiKhoanEntity taiKhoanEntity = taiKhoanRepository.findById(request.getId()).get();
+        if (taiKhoanEntity != null) {
+            taiKhoanEntity.setGiayTo(request.getGiayTo());
+            entityManager.merge(taiKhoanEntity);
+            return true;
+        }
+        return false;
+    }
+
+    public TaiKhoanHienGiayToResponse hienGiayTo(Long id) {
+        TaiKhoanEntity taiKhoanEntity = taiKhoanRepository.findById(id).get();
+        if (taiKhoanEntity != null) {
+            TaiKhoanHienGiayToResponse response = new TaiKhoanHienGiayToResponse();
+            response.setId(id);
+            response.setGiayTo(taiKhoanEntity.getGiayTo());
+            return response;
+        }
+        return null;
+    }
+
+    public boolean xoaGiayTo(Long id) {
+        TaiKhoanEntity taiKhoanEntity = taiKhoanRepository.findById(id).get();
+        if (taiKhoanEntity != null) {
+            taiKhoanEntity.setGiayTo("");
+            entityManager.merge(taiKhoanEntity);
             return true;
         }
         return false;

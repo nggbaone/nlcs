@@ -40,6 +40,9 @@ public class TaiKhoanEntity implements UserDetails , Serializable {
     @Column(name = "diaChi")
     private String diaChi;
 
+    @Column(name = "giayTo")
+    private String giayTo;
+
     @Column(name = "trangThai")
     private long trangThai;
 
@@ -55,6 +58,9 @@ public class TaiKhoanEntity implements UserDetails , Serializable {
 
     @OneToMany(mappedBy = "taiKhoanEntity", fetch = FetchType.LAZY)
     private List<HopDongEntity> hopDongEntityList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "taiKhoanEntity", fetch = FetchType.LAZY)
+    private List<SuCoEntity> suCoEntityList = new ArrayList<>();
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

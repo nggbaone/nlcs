@@ -34,7 +34,8 @@ public class AppConfig {
             "/tinh",
             "/huyen/**",
             "/uploads/**",
-            "/files/**"
+            "/files/**",
+            "/nha-tro/khach/show"
     };
 
     @Bean

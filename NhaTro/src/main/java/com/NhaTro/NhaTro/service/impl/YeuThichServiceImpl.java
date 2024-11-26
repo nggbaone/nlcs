@@ -33,7 +33,13 @@ public class YeuThichServiceImpl implements YeuThichService {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public void themYeuThich(YeuThichThemRequest request){
+    public boolean themYeuThich(YeuThichThemRequest request) {
+        List<YeuThichEntity> yeuThichEntityList = yeuThichRepository.findAll();
+        for (YeuThichEntity i : yeuThichEntityList) {
+            if (i.getTaiKhoanEntity().getId() == request.getId_TaiKhoan() && i.getNhaTroEntity().getId() == request.getId_NhaTro()) {
+                return false;
+            }
+        }
         YeuThichEntity yeuThichEntity = new YeuThichEntity();
         TaiKhoanEntity taiKhoanEntity = new TaiKhoanEntity();
         taiKhoanEntity.setId(request.getId_TaiKhoan());
@@ -42,6 +48,7 @@ public class YeuThichServiceImpl implements YeuThichService {
         yeuThichEntity.setTaiKhoanEntity(taiKhoanEntity);
         yeuThichEntity.setNhaTroEntity(nhaTroEntity);
         entityManager.persist(yeuThichEntity);
+        return true;
     }
 
     public List<NhaTroHienThiResponse> hienThiYeuThich (Long idTaiKhoan) {

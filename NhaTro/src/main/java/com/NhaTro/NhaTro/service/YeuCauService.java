@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface YeuCauService {
 
-    void themYeuCau(YeuCauThemRequest request);
+    boolean themYeuCau(YeuCauThemRequest request);
     List<NhaTroHienThiResponse> hienThiYeuCau (Long idTaiKhoan);
     List<NhaTroHienThiResponse> hienThiYeuCau1 (Long idTaiKhoan);
     void xoaYeuCau(YeuCauXoaRequest request);

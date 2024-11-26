@@ -1,12 +1,14 @@
 package com.NhaTro.NhaTro.controller;
 
 import com.NhaTro.NhaTro.dto.request.TaiKhoanDangNhapRequest;
+import com.NhaTro.NhaTro.dto.request.TaiKhoanThemGiayToRequest;
 import com.NhaTro.NhaTro.dto.request.admin.CapNhatTaiKhoanRequest;
 import com.NhaTro.NhaTro.dto.request.admin.TaiKhoanThemRequest;
 import com.NhaTro.NhaTro.dto.request.khach.TaiKhoanCapNhatRequest;
 import com.NhaTro.NhaTro.dto.request.khach.TaiKhoanDangKyRequest;
 import com.NhaTro.NhaTro.dto.request.khach.TaiKhoanDoiMatKhauRequest;
 import com.NhaTro.NhaTro.dto.response.TaiKhoanDangNhapResponse;
+import com.NhaTro.NhaTro.dto.response.TaiKhoanHienGiayToResponse;
 import com.NhaTro.NhaTro.dto.response.admin.ChiTietTaiKhoanResponse;
 import com.NhaTro.NhaTro.dto.response.admin.TaiKhoanHienThiResponse;
 import com.NhaTro.NhaTro.dto.response.khach.TaiKhoanHoatDongResponse;
@@ -91,6 +93,21 @@ public class TaiKhoanController {
     @PutMapping("/admin/cap-nhat")
     public boolean ad_CapNhatTaiKhoan(@RequestBody CapNhatTaiKhoanRequest request) {
         return taiKhoanService.ad_CapNhatTaiKhoan(request);
+    }
+
+    @PostMapping("/them-giay-to")
+    public boolean themGiayTo(@RequestBody TaiKhoanThemGiayToRequest request) {
+        return taiKhoanService.themGiayTo(request);
+    }
+
+    @GetMapping("/hien-giay-to/{id}")
+    public TaiKhoanHienGiayToResponse hienGiayTo(@PathVariable("id") Long id) {
+        return taiKhoanService.hienGiayTo(id);
+    }
+
+    @PostMapping("/xoa-giay-to/{id}")
+    public boolean xoaGiayTo(@PathVariable("id") Long id) {
+        return taiKhoanService.xoaGiayTo(id);
     }
 
 }

@@ -28,6 +28,11 @@ public class NhaTroController {
         return nhaTroService.hienThiNhaTro();
     }
 
+    @GetMapping("/khach/show")
+    public List<NhaTroHienThiResponse> hienThiNhaTro1(){
+        return nhaTroService.hienThiNhaTro1();
+    }
+
     @GetMapping("/{id_tro}")
     public NhaTroHienThiResponse hienThiNhaTro_Id(@PathVariable("id_tro") String id_tro){
         Long id = Long.parseLong(id_tro);

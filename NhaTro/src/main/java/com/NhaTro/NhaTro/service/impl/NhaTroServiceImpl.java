@@ -58,6 +58,30 @@ public class NhaTroServiceImpl implements NhaTroService {
         return hienThiResponseList;
     }
 
+    public List<NhaTroHienThiResponse> hienThiNhaTro1(){
+        List<NhaTroEntity> nhaTroEntityList = nhaTroRepository.findAll();
+        List<NhaTroHienThiResponse> hienThiResponseList = new ArrayList<>();
+        for (NhaTroEntity nhaTroEntity : nhaTroEntityList) {
+            if (nhaTroEntity.getTrangThai() == 1) {
+                NhaTroHienThiResponse hienThiResponse = new NhaTroHienThiResponse();
+                hienThiResponse.setTieuDe(nhaTroEntity.getTieuDe());
+                hienThiResponse.setDienTich(nhaTroEntity.getDienTich());
+                hienThiResponse.setHang(nhaTroEntity.getHang());
+                hienThiResponse.setTrangThai(nhaTroEntity.getTrangThai());
+                hienThiResponse.setDiaChi(nhaTroEntity.getDiaChi());
+                hienThiResponse.setGiaDien(nhaTroEntity.getGiaDien());
+                hienThiResponse.setGiaNuoc(nhaTroEntity.getGiaNuoc());
+                hienThiResponse.setGiaThue(nhaTroEntity.getGiaThue());
+                hienThiResponse.setMoTa(nhaTroEntity.getMoTa());
+                hienThiResponse.setNoiThat(nhaTroEntity.getNoiThat());
+                hienThiResponseList.add(hienThiResponse);
+                hienThiResponse.setId(nhaTroEntity.getId());
+                hienThiResponse.setHinhAnh(nhaTroEntity.getHinhAnh());
+            }
+        }
+        return hienThiResponseList;
+    }
+
     public NhaTroEntity hienThiNhaTro_Id(Long id){
         return nhaTroRepository.hienThi_NhaTro_id(id);
     }
@@ -69,7 +93,10 @@ public class NhaTroServiceImpl implements NhaTroService {
         hienThiResponse.setDienTich(nhaTroEntity.getDienTich());
         hienThiResponse.setHang(nhaTroEntity.getHang());
         hienThiResponse.setTrangThai(nhaTroEntity.getTrangThai());
-        hienThiResponse.setDiaChi(nhaTroEntity.getDiaChi());
+        HuyenEntity huyenEntity = huyenRepository.findById(nhaTroEntity.getHuyenEntity().getId()).get();
+        TinhEntity tinhEntity = tinhRepository.findById(huyenEntity.getTinhEntity().getId()).get();
+        String diaChi = nhaTroEntity.getDiaChi() + ", " + huyenEntity.getTenHuyen() + ", " + tinhEntity.getTenTinh();
+        hienThiResponse.setDiaChi(diaChi);
         hienThiResponse.setGiaDien(nhaTroEntity.getGiaDien());
         hienThiResponse.setGiaNuoc(nhaTroEntity.getGiaNuoc());
         hienThiResponse.setGiaThue(nhaTroEntity.getGiaThue());
@@ -93,6 +120,7 @@ public class NhaTroServiceImpl implements NhaTroService {
         nhaTroEntity.setMoTa(request.getMoTa());
         nhaTroEntity.setNoiThat(request.getNoiThat());
         nhaTroEntity.setHinhAnh(request.getHinhAnh());
+        nhaTroEntity.setTrangThai(1L);
 
         List<HuyenEntity> huyenEntityList = huyenRepository.findAll();
         for (HuyenEntity huyenEntity : huyenEntityList) {

@@ -61,4 +61,7 @@ public class NhaTroEntity {
 
     @OneToMany(mappedBy = "nhaTroEntity")
     private List<HopDongEntity> hopDongEntityList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "nhaTroEntity")
+    private List<SuCoEntity> suCoEntityList = new ArrayList<>();
 }

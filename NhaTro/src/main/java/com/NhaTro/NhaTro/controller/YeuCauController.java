@@ -28,8 +28,7 @@ public class YeuCauController {
 
     @PostMapping
     public boolean themYeuCau(@RequestBody YeuCauThemRequest request) {
-        yeuCauService.themYeuCau(request);
-        return true;
+        return yeuCauService.themYeuCau(request);
     }
 
     @GetMapping("/{idTaiKhoan}")

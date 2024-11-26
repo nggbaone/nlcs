@@ -13,5 +13,6 @@ public interface NhaTroRepository extends JpaRepository<NhaTroEntity, Long>, Nha
     NhaTroEntity hienThi_NhaTro_id(Long id);
     int capNhatNhaTro(NhaTroCapNhatRequest request);
     List<NhaTroEntity> timKiemNhaTro(NhaTroTimKiemRequest request);
+    int capNhatTrangThaiTro(Long id, Long t);
 
 }
