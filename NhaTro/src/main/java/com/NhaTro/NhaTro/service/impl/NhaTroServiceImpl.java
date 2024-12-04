@@ -5,9 +5,11 @@ import com.NhaTro.NhaTro.dto.request.admin.NhaTroThemRequest;
 import com.NhaTro.NhaTro.dto.request.khach.NhaTroTimKiemRequest;
 import com.NhaTro.NhaTro.dto.response.admin.ChiTietNhaTroResponse;
 import com.NhaTro.NhaTro.dto.response.khach.NhaTroHienThiResponse;
+import com.NhaTro.NhaTro.entity.HopDongEntity;
 import com.NhaTro.NhaTro.entity.HuyenEntity;
 import com.NhaTro.NhaTro.entity.NhaTroEntity;
 import com.NhaTro.NhaTro.entity.TinhEntity;
+import com.NhaTro.NhaTro.repository.HopDongRepository;
 import com.NhaTro.NhaTro.repository.HuyenRepository;
 import com.NhaTro.NhaTro.repository.NhaTroRepository;
 import com.NhaTro.NhaTro.repository.TinhRepository;
@@ -35,6 +37,8 @@ public class NhaTroServiceImpl implements NhaTroService {
 
     @Autowired
     private HuyenRepository huyenRepository;
+    @Autowired
+    private HopDongRepository hopDongRepository;
 
     public List<NhaTroHienThiResponse> hienThiNhaTro(){
         List<NhaTroEntity> nhaTroEntityList = nhaTroRepository.findAll();
@@ -133,6 +137,12 @@ public class NhaTroServiceImpl implements NhaTroService {
     }
 
     public boolean xoaNhaTro(Long id) {
+        List<HopDongEntity> hopDongEntityList = hopDongRepository.findAll();
+        for (HopDongEntity i : hopDongEntityList) {
+            if (i.getNhaTroEntity().getId() == id) {
+                return false;
+            }
+        }
         Optional<NhaTroEntity> nhaTroEntity = nhaTroRepository.findById(id);
         if (nhaTroEntity.isPresent()) {
             nhaTroRepository.deleteById(id);
@@ -170,8 +180,6 @@ public class NhaTroServiceImpl implements NhaTroService {
     public boolean capNhatNhaTro(NhaTroCapNhatRequest request) {
         Optional<NhaTroEntity> nhaTroEntity = nhaTroRepository.findById(request.getId());
         if (nhaTroEntity.isPresent()) {
-            //Optional<HuyenEntity> huyenEntity = huyenRepository.findById(request.getHuyen());
-
             int check = nhaTroRepository.capNhatNhaTro(request);
             return true;
         }

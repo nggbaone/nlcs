@@ -160,6 +160,7 @@ public class YeuCauServiceImpl implements YeuCauService {
             response.setGia_nuoc(nhaTroEntity.get().getGiaNuoc());
             response.setNoi_that(nhaTroEntity.get().getNoiThat());
             response.setMo_ta(nhaTroEntity.get().getMoTa());
+            response.setHang(nhaTroEntity.get().getHang());
 
             Optional<HuyenEntity> huyenEntity = huyenRepository.findById(nhaTroEntity.get().getHuyenEntity().getId());
             Optional<TinhEntity> tinhEntity = tinhRepository.findById(huyenEntity.get().getTinhEntity().getId());

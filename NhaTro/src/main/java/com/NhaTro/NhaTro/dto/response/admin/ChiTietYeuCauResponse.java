@@ -23,4 +23,5 @@ public class ChiTietYeuCauResponse {
     private String noi_that;
     private String mo_ta;
     private String dia_chi_tro;
+    private Long hang;
 }
